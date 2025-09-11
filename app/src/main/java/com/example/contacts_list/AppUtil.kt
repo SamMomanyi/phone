@@ -19,3 +19,16 @@ object AppUtil {
 
     val deleteIcon : ImageVector = Icons.Default.Delete
    }
+
+//data class ContactsUIState(
+//    var contacts : List<ContactProperties> = emptyList(),
+//    var isLoading :Boolean = false,
+//    var isErrorMessage : String? = null
+//)
+
+sealed class DatabaseResponse<out Contacts>
+data class Success(val data : List<ContactProperties>) : DatabaseResponse<List<ContactProperties>>()
+data class Failure(val ex : Exception?) : DatabaseResponse<Nothing>()
+data object isLoading : DatabaseResponse<Nothing>()
+
+

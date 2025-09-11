@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    //ksp
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -40,6 +42,14 @@ android {
 }
 
 dependencies {
+    //room and stuff
+    implementation(libs.protolite.well.known.types)
+    val room_version = "2.7.2"
+    //room
+    implementation("androidx.room:room-runtime:2.5.0")
+    implementation("androidx.room:room-ktx:2.5.0")
+    ksp("androidx.room:room-compiler:2.5.0")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

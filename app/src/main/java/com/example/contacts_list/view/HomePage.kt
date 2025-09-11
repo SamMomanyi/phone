@@ -17,6 +17,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.contacts_list.viewModel.ContactsViewModel
 
 @Composable
@@ -31,6 +33,9 @@ fun HomePage(padding: Modifier) {
     var selectedIndex by rememberSaveable() {
         mutableStateOf(0)
     }
+
+
+
     Scaffold(
         bottomBar = {
             NavigationBar() {
@@ -58,8 +63,9 @@ fun HomePage(padding: Modifier) {
 
 @Composable
 fun destination(modifier: Modifier,selectedIndex: Int) {
+    val viewModel = ContactsViewModel()
     when (selectedIndex) {
-        0 -> { contactsList(viewModel = ContactsViewModel()) }
+        0 -> { contactsList(viewModel = viewModel) }
 
         1 -> { favouritesScreen() }
 

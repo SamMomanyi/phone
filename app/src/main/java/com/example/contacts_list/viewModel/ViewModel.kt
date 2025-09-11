@@ -14,11 +14,18 @@ class ContactsViewModel : ViewModel() {
 
     private val _contactsList = MutableStateFlow<List<ContactProperties>>(emptyList())
     val contactList: StateFlow<List<ContactProperties>> = _contactsList
+
+   // private val _uiState = MutableStateFlow<ContactsUIState>(ContactsUIState(isLoading = true))
+    // val uiState : StateFlow<Any?> = _uiState
+
     init{
         getContacts()
     }
+
     private fun getContacts() {
-        _contactsList.value = AppUtil.contactList
+        //start the loading
+     _contactsList.value = AppUtil.contactList
+
     }
 
 }

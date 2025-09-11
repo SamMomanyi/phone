@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -44,27 +45,12 @@ import com.example.contacts_list.viewModel.ContactsViewModel
 @Composable
 fun contactsList(viewModel: ContactsViewModel){
 
+    val state by viewModel.uiState.collectAsState()
     val contacts by viewModel.contactList.collectAsState()
 
-    Column(
-        modifier = Modifier
-            .padding(
-                top = 30.dp
-            )
-            .fillMaxSize(),
-    ) {
 
-        contacts.let {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-            ) {
-                itemsIndexed(contacts) { index, item ->
-                    Contact(item)
-                }
-            }
-        }
-    }
+
+
 }
 
 @Composable
