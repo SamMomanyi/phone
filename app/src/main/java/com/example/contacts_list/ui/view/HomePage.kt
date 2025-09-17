@@ -1,4 +1,4 @@
-package com.example.contacts_list.view
+package com.example.contacts_list.ui.view
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -19,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.room.Room
+import com.example.contacts_list.database.ContactDatabase
 import com.example.contacts_list.viewModel.ContactsViewModel
 
 @Composable
@@ -33,8 +35,6 @@ fun HomePage(padding: Modifier) {
     var selectedIndex by rememberSaveable() {
         mutableStateOf(0)
     }
-
-
 
     Scaffold(
         bottomBar = {
@@ -63,14 +63,20 @@ fun HomePage(padding: Modifier) {
 
 @Composable
 fun destination(modifier: Modifier,selectedIndex: Int) {
-    val viewModel = ContactsViewModel()
-    when (selectedIndex) {
-        0 -> { contactsList(viewModel = viewModel) }
 
-        1 -> { favouritesScreen() }
+    //intializing the room database
 
-        2 -> { recentScreen() }
-    }
+//    val viewModel = ContactsViewModel(
+//        dao =
+//    )
+//
+//    when (selectedIndex) {
+//        0 -> { contactsList(viewModel = viewModel) }
+//
+//        1 -> { favouritesScreen() }
+//
+//        2 -> { recentScreen() }
+//    }
 }
 
 data class navItem(
