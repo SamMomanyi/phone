@@ -5,10 +5,12 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -43,7 +45,7 @@ import com.example.contacts_list.ContactEvent
 import com.example.contacts_list.ContactState
 import com.example.contacts_list.SortType
 import com.example.contacts_list.database.ContactProperties
-import com.example.contacts_list.viewModel.ContactsViewModel
+import com.example.contacts_list.daggerhilt.viewModel.ContactsViewModel
 
 @Composable
 fun contactsList(viewModel: ContactsViewModel) {
@@ -100,20 +102,32 @@ fun Contact(contact: ContactProperties,onEvent: (ContactEvent) -> Unit) {
                             fontWeight = FontWeight.Light
                         )
                     )
-                    Text(
+                    Row(
                         modifier = Modifier
                             .weight(0.8f)
                             .padding(
                                 top = 8.dp,
                                 start = 3.dp
-                            ),
-                        text = contact.firstName,
-                        style = TextStyle(
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Right,
-                            fontSize = 20.sp
+                            )
+                    ) {
+                        Text(
+                            text = contact.firstName,
+                            style = TextStyle(
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Right,
+                                fontSize = 20.sp
+                            )
                         )
-                    )
+                        Spacer(modifier = Modifier.size(10.dp))
+                        Text(
+                            text = contact.lastName,
+                            style = TextStyle(
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Right,
+                                fontSize = 20.sp
+                            )
+                        )
+                    }
                 }
                 IconButton(onClick = {onEvent(ContactEvent.DeleteContact(contact)) }) {
                     Icon(

@@ -1,4 +1,4 @@
-package com.example.contacts_list.viewModel
+package com.example.contacts_list.daggerhilt.viewModel
 
 import androidx.compose.ui.graphics.Path.Companion.combine
 import androidx.lifecycle.LiveData
@@ -9,8 +9,11 @@ import com.example.contacts_list.AppUtil
 import com.example.contacts_list.ContactEvent
 import com.example.contacts_list.ContactState
 import com.example.contacts_list.SortType
+import com.example.contacts_list.daggerhilt.myDatabase
+import com.example.contacts_list.daggerhilt.myDatabaseImplementation
 import com.example.contacts_list.database.ContactDao
 import com.example.contacts_list.database.ContactProperties
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,10 +26,12 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class ContactsViewModel(
-    private val dao: ContactDao
+@HiltViewModel
+class ContactsViewModel @Inject constructor(
+    private val dao : myDatabaseImplementation
 ) : ViewModel() {
 
     //to avoid change by the UI or another class

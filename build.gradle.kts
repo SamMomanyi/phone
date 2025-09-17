@@ -8,4 +8,12 @@ plugins {
     alias(libs.plugins.ksp) apply false
     //room
     id("com.android.library") version "8.2.0" apply false
+
+    //dagger-hilt
+    alias(libs.plugins.hilt) apply false
+    // id("com.google.dagger.hilt.android") version "2.56.2" apply false
+    //ksp
+    //alias(libs.plugins.ksp) apply false
+    //room
+    //id("com.android.library") version "8.2.0" apply false
 }

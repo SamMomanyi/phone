@@ -21,7 +21,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.room.Room
 import com.example.contacts_list.database.ContactDatabase
-import com.example.contacts_list.viewModel.ContactsViewModel
+import com.example.contacts_list.daggerhilt.viewModel.ContactsViewModel
 
 @Composable
 fun HomePage(padding: Modifier) {

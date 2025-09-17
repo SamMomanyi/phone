@@ -22,7 +22,7 @@ import com.example.contacts_list.ui.theme.Contacts_listTheme
 import com.example.contacts_list.ui.view.ContactScreen
 import com.example.contacts_list.ui.view.HomePage
 import com.example.contacts_list.ui.view.contactsList
-import com.example.contacts_list.viewModel.ContactsViewModel
+import com.example.contacts_list.daggerhilt.viewModel.ContactsViewModel
 
 class MainActivity : ComponentActivity() {
 

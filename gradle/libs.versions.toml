@@ -11,6 +11,7 @@ composeBom = "2024.09.00"
 runtimeLivedata = "1.9.0"
 ksp = "2.0.21-1.0.26" #ksp
 protoliteWellKnownTypes = "18.0.1" #for room
+hilt = "2.52" # latest stable as of now for hilt
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -29,10 +30,14 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" } #for room
-
+#hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 #ksp
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+#hilt
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
