@@ -31,7 +31,7 @@ import javax.inject.Inject
 @OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class ContactsViewModel @Inject constructor(
-    private val dao : myDatabaseImplementation
+    private val dao : myDatabaseImplementation //still the same procedure in acquiring dao
 ) : ViewModel() {
 
     //to avoid change by the UI or another class

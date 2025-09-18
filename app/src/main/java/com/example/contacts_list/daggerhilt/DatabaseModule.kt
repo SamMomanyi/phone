@@ -1,17 +1,20 @@
 package com.example.contacts_list.daggerhilt
 
+import com.example.contacts_list.database.ContactDao
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
 @Module
-@InstallIn(SingletonComponent::class)
-abstract class DatabaseModule  {
+abstract class DatabaseModule(){
     @Binds
     @Singleton
-    abstract  fun  bindMyDatabase(
-        myDatabaseImplementation: myDatabaseImplementation
-    ) : myDatabaseImplementation
+    abstract fun bindDBImplementation(
+        repository : myDatabaseImplementation
+    ): ContactDao
+
 }

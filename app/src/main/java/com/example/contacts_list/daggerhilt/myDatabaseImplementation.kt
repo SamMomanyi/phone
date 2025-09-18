@@ -1,6 +1,6 @@
 package com.example.contacts_list.daggerhilt
 
-import com.example.contacts_list.daggerhilt.di.ApplicationContext
+
 import com.example.contacts_list.database.ContactDao
 import com.example.contacts_list.database.ContactDatabase
 import com.example.contacts_list.database.ContactProperties
@@ -8,31 +8,20 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
-class myDatabaseImplementation
-    @Inject constructor(
-        private val database : ContactDao,
-        private val app : ApplicationContext
-    ) :ContactDao {
-        //we could then write the functions here
+class myDatabaseImplementation @Inject constructor(
+    private val database: ContactDatabase //no need to provide application context if we injecting database, it already has an application context
+):ContactDao{
 
-    override suspend fun upsertContact(contact: ContactProperties) {
-        TODO("Not yet implemented")
-    }
+    private val dao = database.dao
 
-    override suspend fun deleteContact(contact: ContactProperties) {
-        TODO("Not yet implemented")
-    }
+    override suspend fun upsertContact(contact: ContactProperties) = dao.upsertContact(contact)
 
-    override fun getContactsOrderedByFirstName(): Flow<List<ContactProperties>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun deleteContact(contact: ContactProperties) = dao.deleteContact(contact)
 
-    override fun getContactsOrderedByLastName(): Flow<List<ContactProperties>> {
-        TODO("Not yet implemented")
-    }
+    override fun getContactsOrderedByFirstName(): Flow<List<ContactProperties>> = dao.getContactsOrderedByFirstName()
 
-    override fun getContactsOrderedByPhoneNumber(): Flow<List<ContactProperties>> {
-        TODO("Not yet implemented")
-    }
+    override fun getContactsOrderedByLastName(): Flow<List<ContactProperties>> = dao.getContactsOrderedByLastName()
+
+    override fun getContactsOrderedByPhoneNumber(): Flow<List<ContactProperties>> = dao.getContactsOrderedByPhoneNumber()
 
 }
